@@ -1,4 +1,4 @@
-import Navbar from "../src/components/common/Navbar";
+import Navigation from "./components/common/Navigation";
 import Home from "../src/components/common/Home";
 import House from '../src/components/Congress/House'
 import { MemberProvider } from "./contexts/MemberContext";
@@ -8,10 +8,10 @@ function App() {
   return (
     <MemberProvider>
       <Router>
-      <div className="App">
-          <Navbar />
+        <div className="App">
           <Container>
-            <Switch>
+          <Navigation />
+          <Switch>
               <Route exact path="/">
                  <Home />
               </Route>
