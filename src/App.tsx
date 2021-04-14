@@ -3,13 +3,14 @@ import Home from "../src/components/common/Home";
 import House from '../src/components/Congress/House'
 import { MemberProvider } from "./contexts/MemberContext";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Container } from 'reactstrap';
 function App() {
   return (
     <MemberProvider>
       <Router>
       <div className="App">
           <Navbar />
-          <div className="content">
+          <Container>
             <Switch>
               <Route exact path="/">
                  <Home />
@@ -21,7 +22,7 @@ function App() {
               </Route>
             </Switch>
             
-            </div>
+            </Container>
         </div>
         </Router>
     </MemberProvider>
