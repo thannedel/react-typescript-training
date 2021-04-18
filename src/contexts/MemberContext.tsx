@@ -2,11 +2,9 @@ import { PropsWithChildren, useState, useEffect } from "react";
 import { createCtx } from "../hooks/useContextProvider";
 
 interface ContextProps {
-  title?: string;
-  author?: string;
-  body?: string;
-  id?: number;
-}
+  first_name?: string;
+  last_name?: string;
+  }
 const [useMember, MemberCtxProvider] = createCtx<ContextProps | any>();
 
 const MemberProvider = (props: PropsWithChildren<any>) => {
@@ -19,7 +17,7 @@ const MemberProvider = (props: PropsWithChildren<any>) => {
   }, [])
 
   const fetchMembers  = async () => {
-      const res = await fetch('http://localhost:5000/members')
+      const res = await fetch('http://localhost:5000/congress-members?_page=10')
       const members = await res.json()
       return members
     }

@@ -1,12 +1,12 @@
 import Navigation from "./components/common/Navigation";
 import Home from "../src/components/common/Home";
-import House from '../src/components/Congress/House'
-import { MemberProvider } from "./contexts/MemberContext";
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Container } from 'reactstrap';
+import { House } from './components/routes/Congress/House'
 function App() {
   return (
-    <MemberProvider>
+    
       <Router>
         <div className="App">
           <Container>
@@ -17,7 +17,7 @@ function App() {
               </Route>
             </Switch>
             <Switch>
-              <Route path="/house">
+              <Route path="/house" component={House}>
                  <House />
               </Route>
             </Switch>
@@ -25,7 +25,7 @@ function App() {
             </Container>
         </div>
         </Router>
-    </MemberProvider>
+  
   );
 }
 

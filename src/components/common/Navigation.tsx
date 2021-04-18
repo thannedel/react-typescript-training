@@ -14,7 +14,7 @@ const Navigation = () => {
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
-              <NavLink tag={Link} to="/house/">Congress/House</NavLink>
+              <NavLink tag={Link} to="/house">House</NavLink>
             </NavItem>
             </Nav>
         </Collapse>
