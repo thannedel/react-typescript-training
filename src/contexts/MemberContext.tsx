@@ -1,28 +1,33 @@
 import { PropsWithChildren, useState, useEffect } from "react";
 import { createCtx } from "../hooks/useContextProvider";
 
-interface ContextProps {
-  first_name?: string;
-  last_name?: string;
-  }
-const [useMember, MemberCtxProvider] = createCtx<ContextProps | any>();
+
+
+
+const [useMember, MemberCtxProvider] = createCtx<any>();
 
 const MemberProvider = (props: PropsWithChildren<any>) => {
-  useEffect(() => {
-    const getMembers = async () => {
-      const MembersFromServer = await fetchMembers()
-      setMembers(MembersFromServer)
+  
+  //const [isLoading, setIsLoading] = useState<boolean>(false);
+ // console.log(isLoading);
+   useEffect(() => {
+    
+    const fetchMembers = async () => {
+   //   setIsLoading(true);
+    const res = await fetch(props.url)
+    const members = await res.json()
+      setMembers(members)
+      console.log(members);
+     // setIsLoading(false);
     }
-    getMembers()
-  }, [])
+    fetchMembers()
+  
+  },[props.url])
 
-  const fetchMembers  = async () => {
-      const res = await fetch('http://localhost:5000/congress-members?_page=10')
-      const members = await res.json()
-      return members
-    }
+  
   const [members, setMembers] = useState<any>([]);
-
+  
+  
   return <MemberCtxProvider value={members}>{props.children}</MemberCtxProvider>;
 };
 export { useMember, MemberProvider };
