@@ -1,21 +1,29 @@
 import { useMember } from '../../contexts/MemberContext';
 import OverviewTableHead from './OverviewTableHead'
 import OverviewTableRow from './OverviewTableRow'
-
+import Paginate from '../common/Paginate'
 import { Table } from 'reactstrap';
+
   const OverviewTable = () => {
-    const { members, isLoading } = useMember();
+    const { members, isLoading,currentPage,membersPerPage } = useMember();
     
     if (isLoading) {
       return(<p>loading...</p>)
     }
-  return (
+ 
+    // For the Pagination
+     const indexOfLastMember = currentPage * membersPerPage;
+     const indexOfFirstMember = indexOfLastMember - membersPerPage;
+     const currentMembers = members.slice(indexOfFirstMember, indexOfLastMember);
+    
+    return (
+    <>
    <Table striped>
       <thead>
           <OverviewTableHead />
       </thead>
       <tbody>
-         {members.map((member: any) => (
+         {currentMembers.map((member: any) => (
            <OverviewTableRow
              key={member.id}
              first_name={member.first_name}
@@ -28,9 +36,9 @@ import { Table } from 'reactstrap';
            
           ))}
       </tbody>
-      </Table>
-    
-  
+        </Table>
+        <Paginate/>
+      </>
   );
 };
 export default OverviewTable;
