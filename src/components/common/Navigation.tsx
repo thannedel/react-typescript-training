@@ -16,6 +16,9 @@ const Navigation = () => {
             <NavItem>
               <NavLink tag={Link} to="/house">House</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink tag={Link} to="/senate">Senate</NavLink>
+            </NavItem>
             </Nav>
         </Collapse>
       </Navbar>
