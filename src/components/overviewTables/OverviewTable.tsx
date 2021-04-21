@@ -4,15 +4,18 @@ import OverviewTableRow from './OverviewTableRow'
 
 import { Table } from 'reactstrap';
   const OverviewTable = () => {
-    const  members  = useMember();
+    const { members, isLoading } = useMember();
     
+    if (isLoading) {
+      return(<p>loading...</p>)
+    }
   return (
    <Table striped>
       <thead>
           <OverviewTableHead />
       </thead>
       <tbody>
-         {members.map((member:any) => (
+         {members.map((member: any) => (
            <OverviewTableRow
              key={member.id}
              first_name={member.first_name}

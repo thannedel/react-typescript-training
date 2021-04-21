@@ -8,26 +8,25 @@ const [useMember, MemberCtxProvider] = createCtx<any>();
 
 const MemberProvider = (props: PropsWithChildren<any>) => {
   
-  //const [isLoading, setIsLoading] = useState<boolean>(false);
- // console.log(isLoading);
+const [isLoading, setIsLoading] = useState<boolean>(true);
+ //console.log(isLoading);
    useEffect(() => {
     
     const fetchMembers = async () => {
-   //   setIsLoading(true);
     const res = await fetch(props.url)
     const members = await res.json()
       setMembers(members)
       console.log(members);
-     // setIsLoading(false);
+      setIsLoading(false);
     }
     fetchMembers()
   
-  },[props.url])
+  },[ props.url])
 
   
   const [members, setMembers] = useState<any>([]);
   
   
-  return <MemberCtxProvider value={members}>{props.children}</MemberCtxProvider>;
+  return <MemberCtxProvider value={{ members,isLoading }}>{props.children}</MemberCtxProvider>;
 };
 export { useMember, MemberProvider };
