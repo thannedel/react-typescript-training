@@ -9,7 +9,8 @@ const [useMember, MemberCtxProvider] = createCtx<any>();
 const MemberProvider = (props: PropsWithChildren<any>) => {
   
 const [isLoading, setIsLoading] = useState<boolean>(true);
- //console.log(isLoading);
+ const [currentPage, setCurrentPage] = useState(1);
+    const [membersPerPage] = useState(10);
    useEffect(() => {
     
     const fetchMembers = async () => {
@@ -27,6 +28,13 @@ const [isLoading, setIsLoading] = useState<boolean>(true);
   const [members, setMembers] = useState<any>([]);
   
   
-  return <MemberCtxProvider value={{ members,isLoading }}>{props.children}</MemberCtxProvider>;
+  return <MemberCtxProvider value={{
+    members,
+    isLoading,
+    currentPage,
+    membersPerPage,
+    setCurrentPage
+  }}>
+    {props.children}</MemberCtxProvider>;
 };
 export { useMember, MemberProvider };
