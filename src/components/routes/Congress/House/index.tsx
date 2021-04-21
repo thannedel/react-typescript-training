@@ -2,10 +2,16 @@ import OverviewTable from "../../../overviewTables/OverviewTable";
 import { Container, Row , Col } from 'reactstrap';
 import { MemberProvider } from "../../../../contexts/MemberContext";
 
+/* interface urlProps{
+  url: string | undefined
+} */
+
 export const House = () => {
+  const url = process.env.REACT_APP_API_CONGRESS_ENDPOINT
+  
   return (
     
-      <MemberProvider>
+      <MemberProvider url={url} >
       <section id="explore-section" className="bg-faded text-muted py-5">
       <Container>
       <h3>Congress</h3>
