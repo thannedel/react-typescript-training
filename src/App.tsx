@@ -4,7 +4,10 @@ import Home from "../src/components/common/Home";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import { House } from './components/routes/Congress/House'
+import { Senate } from './components/routes/Congress/Senate'
+
 function App() {
+  
   return (
     
       <Router>
@@ -18,10 +21,14 @@ function App() {
             </Switch>
             <Switch>
               <Route path="/house" component={House}>
-                 <House />
+                 
               </Route>
             </Switch>
-            
+            <Switch>
+              <Route path="/senate" >
+              <Senate />
+              </Route>
+            </Switch>
             </Container>
         </div>
         </Router>
