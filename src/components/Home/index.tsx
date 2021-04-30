@@ -1,9 +1,13 @@
+import LandingCarousel from './LandingCarousel'
+
 const Home = () => {
   
   return (
     <div className="home">
-     <h1>Home</h1>
+     <LandingCarousel />
     </div>
   );
 };
 export default Home;
+
+
