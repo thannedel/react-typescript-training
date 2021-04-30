@@ -1,5 +1,5 @@
 import Navigation from "./components/common/Navigation";
-import Home from "../src/components/common/Home";
+import Home  from "./components/Home";
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Container } from 'reactstrap';
